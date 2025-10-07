@@ -141,7 +141,7 @@ class Curso extends Model
             'duracion' => 'nullable|integer',
             'fecha_inicio' => 'nullable|date',
             'fecha_fin' => 'nullable|date|after_or_equal:fecha_inicio',
-            'precio' => 'nullable|numeric|min:0',
+            'precio' => 'float',
             'activo' => 'nullable|boolean',
         ];
     }
