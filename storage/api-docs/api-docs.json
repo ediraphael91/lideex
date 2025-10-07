@@ -1,0 +1,454 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Lideex API Documentation",
+        "description": "Documentación de la API REST de Lideex",
+        "contact": {
+            "email": "admin@lideex.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Servidor de desarrollo local"
+        },
+        {
+            "url": "https://api.lideex.com",
+            "description": "Servidor de producción"
+        }
+    ],
+    "paths": {
+        "/api/cursos": {
+            "get": {
+                "tags": [
+                    "Cursos"
+                ],
+                "summary": "Obtener todos los cursos",
+                "description": "Retorna una lista de todos los cursos disponibles",
+                "operationId": "ce4902ce36ce58b9ed475eabcbf2dd16",
+                "responses": {
+                    "200": {
+                        "description": "Lista de cursos obtenida exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "nombre": {
+                                                "type": "string",
+                                                "example": "DESARROLLO WEB CON LARAVEL"
+                                            },
+                                            "descripcion": {
+                                                "type": "string",
+                                                "example": "Curso completo de Laravel"
+                                            },
+                                            "nivel": {
+                                                "type": "string",
+                                                "example": "Intermedio"
+                                            },
+                                            "duracion": {
+                                                "type": "integer",
+                                                "example": 40
+                                            },
+                                            "fecha_inicio": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2025-11-01"
+                                            },
+                                            "fecha_fin": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2025-12-15"
+                                            },
+                                            "precio": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "example": 299.99
+                                            },
+                                            "activo": {
+                                                "type": "boolean",
+                                                "example": true
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Cursos"
+                ],
+                "summary": "Crear un nuevo curso",
+                "description": "Crea un nuevo curso con los datos proporcionados",
+                "operationId": "1ca42229715ee4cbdb9820b86e639989",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "maxLength": 150,
+                                        "example": "Desarrollo Web con Laravel"
+                                    },
+                                    "descripcion": {
+                                        "type": "string",
+                                        "example": "Curso completo de desarrollo web utilizando Laravel"
+                                    },
+                                    "nivel": {
+                                        "type": "string",
+                                        "maxLength": 50,
+                                        "example": "Intermedio"
+                                    },
+                                    "duracion": {
+                                        "description": "Duración en horas",
+                                        "type": "integer",
+                                        "minimum": 1,
+                                        "example": 40
+                                    },
+                                    "fecha_inicio": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025-11-01"
+                                    },
+                                    "fecha_fin": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025-12-15"
+                                    },
+                                    "precio": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "minimum": 0,
+                                        "example": 299.99
+                                    },
+                                    "activo": {
+                                        "type": "boolean",
+                                        "example": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Curso creado exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Curso creado exitosamente."
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "nombre": {
+                                                    "type": "string",
+                                                    "example": "DESARROLLO WEB CON LARAVEL"
+                                                },
+                                                "descripcion": {
+                                                    "type": "string",
+                                                    "example": "Curso completo de desarrollo web utilizando Laravel"
+                                                },
+                                                "nivel": {
+                                                    "type": "string",
+                                                    "example": "Intermedio"
+                                                },
+                                                "duracion": {
+                                                    "type": "integer",
+                                                    "example": 40
+                                                },
+                                                "fecha_inicio": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2025-11-01"
+                                                },
+                                                "fecha_fin": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2025-12-15"
+                                                },
+                                                "precio": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "example": 299.99
+                                                },
+                                                "activo": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error de validación",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error interno del servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Error al crear el curso."
+                                        },
+                                        "error_code": {
+                                            "type": "string",
+                                            "example": "DATABASE_ERROR"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cursos/{id}": {
+            "put": {
+                "tags": [
+                    "Cursos"
+                ],
+                "summary": "Actualizar un curso existente",
+                "description": "Actualiza los datos de un curso específico",
+                "operationId": "69cf34dcba8f354e6c95826a1c34004a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del curso a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "maxLength": 150,
+                                        "example": "Desarrollo Web con Laravel"
+                                    },
+                                    "descripcion": {
+                                        "type": "string",
+                                        "example": "Curso completo de desarrollo web utilizando Laravel"
+                                    },
+                                    "nivel": {
+                                        "type": "string",
+                                        "maxLength": 50,
+                                        "example": "Avanzado"
+                                    },
+                                    "duracion": {
+                                        "type": "integer",
+                                        "minimum": 1,
+                                        "example": 50
+                                    },
+                                    "fecha_inicio": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025-11-01"
+                                    },
+                                    "fecha_fin": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025-12-31"
+                                    },
+                                    "precio": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "minimum": 0,
+                                        "example": 349.99
+                                    },
+                                    "activo": {
+                                        "type": "boolean",
+                                        "example": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Curso actualizado exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "nombre": {
+                                            "type": "string",
+                                            "example": "DESARROLLO WEB CON LARAVEL"
+                                        },
+                                        "descripcion": {
+                                            "type": "string"
+                                        },
+                                        "nivel": {
+                                            "type": "string"
+                                        },
+                                        "duracion": {
+                                            "type": "integer"
+                                        },
+                                        "fecha_inicio": {
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "fecha_fin": {
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "precio": {
+                                            "type": "number",
+                                            "format": "float"
+                                        },
+                                        "activo": {
+                                            "type": "boolean"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Curso no encontrado"
+                    },
+                    "422": {
+                        "description": "Error de validación"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Cursos"
+                ],
+                "summary": "Eliminar un curso",
+                "description": "Elimina un curso específico (soft delete)",
+                "operationId": "6e380143cdb74c2815086d3935bff525",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del curso a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Curso eliminado exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Curso eliminado"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Curso no encontrado"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Cursos",
+            "description": "API Endpoints para gestión de cursos"
+        }
+    ]
+}
